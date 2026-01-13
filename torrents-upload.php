@@ -483,15 +483,15 @@ print ("<tr><td align='right'>" . T_("CATEGORY") . ":<font color='red' size ='3'
 
 print ("<tr><td align='right'>" .T_("NFO"). ": </td><td align='left'> <input type='file' name='nfo' size='50' value='" . $_FILES['nfo']['name'] . "' /><br />\n</td></tr>");
 print ("<tr><td align='right'>" . T_("TORRENT_NAME") . ": </td><td align='left'><input type='text' name='name' size='60' value='" . $_POST['name'] . "' /><br />".T_("THIS_WILL_BE_TAKEN_TORRENT")." \n</td></tr>");
-print ("<tr><td align='right'>" .T_("IMDB")."</td><td align='left'><input type='text' name='imdb' size='50' value='" . $_POST['imdb'] . "' />&nbsp;<a href='http://www.imdb.com' target='_blank'><img border='0' src='images/imdb_upload.png' width='80' height='80' title='Click here to go to IMDb'></a><br />".T_("IMDB_INFO")."</td></tr>");
+//print ("<tr><td align='right'>" .T_("IMDB")."</td><td align='left'><input type='text' name='imdb' size='50' value='" . $_POST['imdb'] . "' />&nbsp;<a href='http://www.imdb.com' target='_blank'><img border='0' src='images/imdb_upload.png' width='80' height='80' title='Click here to go to IMDb'></a><br />".T_("IMDB_INFO")."</td></tr>");
 print ("<tr><td></td></tr>");
 print ("<tr><td></td></tr>");
-print ("<tr><td colspan='2' align='center'><hr/></td></tr>");
+//print ("<tr><td colspan='2' align='center'><hr/></td></tr>");
 
-print ("<tr><td colspan='2' align='center'><font color='green' size ='5'>".T_("ADD_TRAILER")."</font></td></tr>");
-print ("<tr><td colspan='2' align='center'><font color='green' size ='2'>".T_("TUBE_OR_IMDB")."</font></td></tr>");
-print ("<tr><td align='right'>" .T_("IMDB_TRAILER").": <br/><span style='color:green'id='second'>Enabled</span></td><td align='left' class='table_col2'><input id='imdb' type='text' name='trailers' size='50' value='" . $_POST['trailers'] . "' />&nbsp;<a href='http://www.imdb.com' target='_blank'><img border='0' src='images/movietrailers.png' width='50' height='50' title='Click here to go to IMDb'></a><br />".T_("IMDB_TRAILER_INFO")."</td></tr>");
-print ("<tr><td align=right>".T_("VIDEOTUBE").": <br/><span style='color:green'id='first'>Enabled</span></td><td align='left' class='table_col2'><input id='youtube' type='text' name='tube' size='50' />&nbsp;<a href=\"https://www.youtube.com\" target='_blank'><img border='0' src='images/youtube.png' width='50' height='50' title='Click here to go to Youtube'></a><br/><i>".T_("FORMAT").": </i> <span style='color:#FF0000'><b> ".T_("YOUTUBEFORMATINFO")."</b></SPAN></td></tr>");
+//print ("<tr><td colspan='2' align='center'><font color='green' size ='5'>".T_("ADD_TRAILER")."</font></td></tr>");
+//print ("<tr><td colspan='2' align='center'><font color='green' size ='2'>".T_("TUBE_OR_IMDB")."</font></td></tr>");
+//print ("<tr><td align='right'>" .T_("IMDB_TRAILER").": <br/><span style='color:green'id='second'>Enabled</span></td><td align='left' class='table_col2'><input id='imdb' type='text' name='trailers' size='50' value='" . $_POST['trailers'] . "' />&nbsp;<a href='http://www.imdb.com' target='_blank'><img border='0' src='images/movietrailers.png' width='50' height='50' title='Click here to go to IMDb'></a><br />".T_("IMDB_TRAILER_INFO")."</td></tr>");
+//print ("<tr><td align=right>".T_("VIDEOTUBE").": <br/><span style='color:green'id='first'>Enabled</span></td><td align='left' class='table_col2'><input id='youtube' type='text' name='tube' size='50' />&nbsp;<a href=\"https://www.youtube.com\" target='_blank'><img border='0' src='images/youtube.png' width='50' height='50' title='Click here to go to Youtube'></a><br/><i>".T_("FORMAT").": </i> <span style='color:#FF0000'><b> ".T_("YOUTUBEFORMATINFO")."</b></SPAN></td></tr>");
 //print ("<tr><td align='right'>".T_("LANGUAGE").": </td><td align='left'>".$language."</td></tr>");
 //print ("<TR><TD align=right>YouTube Video Link: </td><td align=left><input type=\"text\" name=\"tube\" size=\"60\" /><br />Links should be in this format<br><font color=red><b>http://www.youtube.com/watch?v=Jc9KR3tOP</b></font></td></tr>");
 
@@ -499,11 +499,12 @@ print ("<tr><td></td></tr>");
 print ("<tr><td></td></tr>");
 print ("<tr><td colspan='2' align='center'><hr/></td></tr>");
 print ("<tr><td colspan='2' align='center'>".T_("MAX_FILE_SIZE").": ".mksize($site_config['image_max_filesize'])."<br />".T_("ACCEPTED_FORMATS").": ".implode(", ", array_unique($site_config["allowed_image_types"]))."<br /></td></tr><tr><td align='right'>".T_("IMAGE")." 1:&nbsp;&nbsp;</td><td><input type='file' name='image0' size='50' /></td></tr><tr><td align='right'>".T_("IMAGE")." 2:&nbsp;&nbsp;</td><td><input type='file' name='image1' size='50' /></td></tr>");
-if ($row["external"] != "yes" && $CURUSER["edit_torrents"] == "yes"){
+/* if ($row["external"] != "yes" && $CURUSER["edit_torrents"] == "yes"){
     echo "<tr><td align='right'>".T_("FREE_LEECH").": </td><td><input type=\"checkbox\" name=\"freeleech\"" . (($row["freeleech"] == "1") ? " checked=\"checked\"" : "" ) . " value=\"1\" />".T_("FREE_LEECH_MSG")."<br /></td></tr>";
 	echo "<tr><td align=right>".T_("STICKY")."</td><td><input type='checkbox' name='sticky'" .
 (($row["sticky"] == "yes") ? " checked='checked'" : "" ) . " value='yes' /></td></tr>";
-}
+}*/
+/*
 ?>
 <script type="text/javascript">
 document.getElementById("youtube").onblur = function () {
@@ -528,6 +529,7 @@ document.getElementById("youtube").onblur = function () {
 }
 </script>
 <?php
+*/
 
 
 
