@@ -248,11 +248,11 @@ if ($row["nfo"] == "yes"){
     echo "&nbsp;&nbsp;<font color='#ff0000'>".T_("NO_NFO_UPLOADED")."</font>";
 }
 echo "<br /><input type='file' name='nfofile' size='60' /></td></tr>";
-echo("<tr><td align='right'><b>".T_("IMDB")."</b></td><td><input type='text' name='imdb' size='60' value='" . htmlspecialchars($row['imdb']) . "' />&nbsp;<a href='http://www.imdb.com' target='_blank'><img border='0' src='images/imdb_upload.gif' width='80' height='64' title='Click here to go to IMDb'></a><br />".T_("IMDB_INFO")."</td></tr>");
+//echo("<tr><td align='right'><b>".T_("IMDB")."</b></td><td><input type='text' name='imdb' size='60' value='" . htmlspecialchars($row['imdb']) . "' />&nbsp;<a href='http://www.imdb.com' target='_blank'><img border='0' src='images/imdb_upload.gif' width='80' height='64' title='Click here to go to IMDb'></a><br />".T_("IMDB_INFO")."</td></tr>");
 print ("<tr><td></td></tr>");
 print ("<tr><td></td></tr>");
-echo("<tr><td align='right'><b>".T_("IMDB_TRAILER").": <br/><span style='color:green'id='second'>Enabled</span></b></td><td class='table_col2'><input id='imdb' type='text' name='trailers' size='60' value='" . htmlspecialchars($row['trailers']) . "' />&nbsp;<a href='http://www.imdb.com' target='_blank'><img border='0' src='images/movietrailers.png' width='80' height='64' title='Click here to go to IMDb'></a><br />".T_("IMDB_TRAILER_INFO")."</td></tr>");
-echo "<tr><td align='right'><b>".T_("VIDEOTUBE").": <br/><span style='color:green'id='first'>Enabled</span><b></td><td class='table_col2' align='left'><input id='youtube' type='text' name='tube' value='" . htmlspecialchars($row["tube"]) . "' size='60' />&nbsp;<a href='http://www.youtube.com' target='_blank'><img border='0' src='images/youtube.png' width='50' height='50' title='Click here to go to Youtube'></a><br/><i>".T_("FORMAT").": </i> <span style='color:#FF0000'><b>http://www.youtube.com/watch?v=Jc9KR3tOP</b></span></td></tr>";
+//echo("<tr><td align='right'><b>".T_("IMDB_TRAILER").": <br/><span style='color:green'id='second'>Enabled</span></b></td><td class='table_col2'><input id='imdb' type='text' name='trailers' size='60' value='" . htmlspecialchars($row['trailers']) . "' />&nbsp;<a href='http://www.imdb.com' target='_blank'><img border='0' src='images/movietrailers.png' width='80' height='64' title='Click here to go to IMDb'></a><br />".T_("IMDB_TRAILER_INFO")."</td></tr>");
+//echo "<tr><td align='right'><b>".T_("VIDEOTUBE").": <br/><span style='color:green'id='first'>Enabled</span><b></td><td class='table_col2' align='left'><input id='youtube' type='text' name='tube' value='" . htmlspecialchars($row["tube"]) . "' size='60' />&nbsp;<a href='http://www.youtube.com' target='_blank'><img border='0' src='images/youtube.png' width='50' height='50' title='Click here to go to Youtube'></a><br/><i>".T_("FORMAT").": </i> <span style='color:#FF0000'><b>http://www.youtube.com/watch?v=Jc9KR3tOP</b></span></td></tr>";
 echo "<tr><td align='right'><b>".T_("CATEGORIES").": </b></td><td>".$catdropdown."</td></tr>";
 
 echo "<tr><td align='right'><b>".T_("LANG").": </b></td><td>".$langdropdown."</td></tr>";
@@ -283,15 +283,15 @@ document.getElementById("youtube").onblur = function () {
 
 //echo "<tr><td align=right><B>Trailer: </b></TD><TD><input type=text name=tube size=60 value='".$row["tube"]."'><br>(Direct link for youtube trailer)</TD></TR>";
 
-if ($CURUSER["edit_torrents"] == "yes")
-    echo "<tr><td align='right'><b>".T_("BANNED").": </b></td><td><input type=\"checkbox\" name=\"banned\"" . (($row["banned"] == "yes") ? " checked=\"checked\"" : "" ) . " value=\"1\" /> ".T_("BANNED")."?<br /></td></tr>";
-echo "<tr><td align='right'><b>".T_("VISIBLE").": </b></td><td><input type=\"checkbox\" name=\"visible\"" . (($row["visible"] == "yes") ? " checked=\"checked\"" : "" ) . " value=\"1\" /> " .T_("VISIBLEONMAIN"). "<br /></td></tr>";
+//if ($CURUSER["edit_torrents"] == "yes")
+//    echo "<tr><td align='right'><b>".T_("BANNED").": </b></td><td><input type=\"checkbox\" name=\"banned\"" . (($row["banned"] == "yes") ? " checked=\"checked\"" : "" ) . " value=\"1\" /> ".T_("BANNED")."?<br /></td></tr>";
+//echo "<tr><td align='right'><b>".T_("VISIBLE").": </b></td><td><input type=\"checkbox\" name=\"visible\"" . (($row["visible"] == "yes") ? " checked=\"checked\"" : "" ) . " value=\"1\" /> " .T_("VISIBLEONMAIN"). "<br /></td></tr>";
 
-if ($row["external"] != "yes" && $CURUSER["edit_torrents"] == "yes"){
-    echo "<tr><td align='right'><b>".T_("FREE_LEECH").": </b></td><td><input type=\"checkbox\" name=\"freeleech\"" . (($row["freeleech"] == "1") ? " checked=\"checked\"" : "" ) . " value=\"1\" />".T_("FREE_LEECH_MSG")."<br /></td></tr>";
-	echo "<tr><td align=right><b>".T_("STICKY")." </b></td><td><input type='checkbox' name='sticky'" .
-(($row["sticky"] == "yes") ? " checked='checked'" : "" ) . " value='yes' />";
-}
+//if ($row["external"] != "yes" && $CURUSER["edit_torrents"] == "yes"){
+//    echo "<tr><td align='right'><b>".T_("FREE_LEECH").": </b></td><td><input type=\"checkbox\" name=\"freeleech\"" . (($row["freeleech"] == "1") ? " checked=\"checked\"" : "" ) . " value=\"1\" />".T_("FREE_LEECH_MSG")."<br /></td></tr>";
+//	echo "<tr><td align=right><b>".T_("STICKY")." </b></td><td><input type='checkbox' name='sticky'" .
+//(($row["sticky"] == "yes") ? " checked='checked'" : "" ) . " value='yes' />";
+//}
 
 if ($site_config['ANONYMOUSUPLOAD']) {
 	echo "<tr><td align='right'><b>".T_("ANONYMOUS_UPLOAD").": </b></td><td><input type=\"checkbox\" name=\"anon\"" . (($row["anon"] == "yes") ? " checked=\"checked\"" : "" ) . " value=\"1\" />(".T_("ANONYMOUS_UPLOAD_MSG").")<br /></td></tr>";
