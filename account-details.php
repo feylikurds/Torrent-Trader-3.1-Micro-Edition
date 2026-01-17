@@ -86,12 +86,12 @@ function peerstable($res){
   return $ret;
 }
 //////BROWSER DETECTION/////
-$browser_id = (int) $CURUSER[browser];
+$browser_id = (int) $CURUSER["browser"];
 if ($browser_id > 0) {
         $res = SQL_Query_exec("SELECT name,browserpic FROM browsers WHERE id=$browser_id LIMIT 1");
         if (mysqli_num_rows($res) == 1) {
                 $arr = mysqli_fetch_assoc($res);
-                $browser = "".$arr[name]." <img src=images/browser/$arr[browserpic] height=30 width=30 border=0>";
+                $browser = "".$arr['name']." <img src=images/browser/$arr[browserpic] height=30 width=30 border=0>";
         } else {
                 $browser = "<img src=images/browser/unknown.png height=30 width=30 border=0>";
         }
