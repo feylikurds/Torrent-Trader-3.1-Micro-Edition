@@ -321,23 +321,23 @@ if (is_array($filelist) && count($filelist)) {
 
 	write_log("Torrent $id (".htmlspecialchars($name).") was Uploaded by $CURUSER[username]");
 	
-//	    If ($uplreq=='no') {
-//            $msg_shout = sqlesc("[color=#800000]".T_("A_NEW_TORRENT")."[/color] : [url=".$site_config['SITEURL']."/torrents-details.php?id=".$id."]".$name."[/url] ".T_("HAS_BEEN_UPLOADED")." ".($anon == 'no' ? "".T_("BY")." [url=".$site_config['SITEURL']."/account-details.php?id=".$CURUSER['id']."]" .$CURUSER['username']. "[/url]" : "")."");
-//        SQL_Query_exec("INSERT INTO shoutbox (userid, date, user, message) VALUES(0,'".get_date_time()."', 'System' ,".$msg_shout.")");
-//		}else{
-//            $msg_shout = sqlesc("[color=#0000FF]".T_("THE_REQUEST")."[/color] : [url=".$site_config['SITEURL']."/torrents-details.php?id=".$id."]".$name."[/url] ".T_("HAS_BEEN_FILLED")." ".($anon == 'no' ? "".T_("BY")." [url=".$site_config['SITEURL']."/account-details.php?id=".$CURUSER['id']."]" .$CURUSER['username']. "[/url]" : "")."");
-//        SQL_Query_exec("INSERT INTO shoutbox (userid, date, user, message) VALUES(0,'".get_date_time()."', 'System' ,".$msg_shout.")");
-//            }
+/*	    If ($uplreq=='no') {
+            $msg_shout = sqlesc("[color=#800000]".T_("A_NEW_TORRENT")."[/color] : [url=".$site_config['SITEURL']."/torrents-details.php?id=".$id."]".$name."[/url] ".T_("HAS_BEEN_UPLOADED")." ".($anon == 'no' ? "".T_("BY")." [url=".$site_config['SITEURL']."/account-details.php?id=".$CURUSER['id']."]" .$CURUSER['username']. "[/url]" : "")."");
+        SQL_Query_exec("INSERT INTO shoutbox (userid, date, user, message) VALUES(0,'".get_date_time()."', 'System' ,".$msg_shout.")");
+		}else{
+            $msg_shout = sqlesc("[color=#0000FF]".T_("THE_REQUEST")."[/color] : [url=".$site_config['SITEURL']."/torrents-details.php?id=".$id."]".$name."[/url] ".T_("HAS_BEEN_FILLED")." ".($anon == 'no' ? "".T_("BY")." [url=".$site_config['SITEURL']."/account-details.php?id=".$CURUSER['id']."]" .$CURUSER['username']. "[/url]" : "")."");
+        SQL_Query_exec("INSERT INTO shoutbox (userid, date, user, message) VALUES(0,'".get_date_time()."', 'System' ,".$msg_shout.")");
+            }
 	
 	If ($uplreq=='yes') {
 	$msg_shout = sqlesc("[color=#0000FF]".T_("THE_REQUEST")."[/color] : [url=".$site_config['SITEURL']."/torrents-details.php?id=".$id."]".$name."[/url] ".T_("HAS_BEEN_FILLED")." ".($anon == 'no' ? "".T_("BY")." [url=".$site_config['SITEURL']."/account-details.php?id=".$CURUSER['id']."]" .$CURUSER['username']. "[/url]" : "")."");
         SQL_Query_exec("INSERT INTO shoutbox (userid, date, user, message) VALUES(0,'".get_date_time()."', 'System' ,".$msg_shout.")");
 		  }
-	
+*/	
 	//shoutbox torrent announce shit////
 	$user = ( $anon == 'yes' || $CURUSER['privacy'] == 'strong' ) ? 'Anonymous' : $CURUSER['username'];
-	$message = "New Torrent: [url=".$site_config['SITEURL']."/torrents-details.php?id=".$id."]".$name."[/url] has been uploaded by $CURUSER[username]";
-	SQL_Query_exec("INSERT INTO `shoutbox` (`uid`, `name`, `message`, `date`) VALUES ('0', 'System', " . sqlesc($message) . ", '".get_date_time()."')");
+	$message = "New Torrent: [url=".$site_config['SITEURL']."/torrents-details.php?id=".$id."]".$name."[/url] has been uploaded by ".$user;
+       SQL_Query_exec("INSERT INTO ajshoutbox (uid, date, name, text) VALUES(0,'".get_date_time()."', 'System' ,".sqlesc($message).")");
 
 	//insert email notif, irc, req notif, etc here
 	
@@ -361,7 +361,7 @@ if (is_array($filelist) && count($filelist)) {
 	else
 		$message = sprintf( T_("TORRENT_UPLOAD_EXTERNAL"), $name, $id );
 	show_error_msg(T_("UPLOAD_COMPLETE"), $message, 1);
-autoclean();
+	autoclean();
 
 	die();
 }//takeupload
