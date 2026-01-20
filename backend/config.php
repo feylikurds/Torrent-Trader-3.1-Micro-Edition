@@ -40,7 +40,7 @@ $site_config['new_member_invites'] = 0 ; 	// Every new user will get 0 invites t
 
 // Maximum accounts using the same IP
 $site_config["ipcheck"] = true; // Enable/disable
-$site_config["accountmax"] = 2; // max number of accounts
+$site_config["accountmax"] = 10; // max number of accounts
 
 //Shoutbox selection
 $site_config["AJSHOUTBOX"] = true; //True = Ajax shoutbox, False = Stock TT.2.08 shoutbox.
