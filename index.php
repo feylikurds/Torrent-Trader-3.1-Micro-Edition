@@ -32,9 +32,35 @@ if ($site_config['SITENOTICEON']){
 	echo $site_config['SITENOTICE'];
 	end_frame();
 }
-?>
 
-<?php
+if ($site_config['NEWSON'] && $CURUSER['view_news'] == "yes"){
+begin_frame(T_("NEWS"));
+$res = SQL_Query_exec("SELECT news.id, news.title, news.added, news.body, users.username FROM news LEFT JOIN users ON news.userid = users.id ORDER BY added DESC LIMIT 10");
+if (mysqli_num_rows($res) > 0){
+print('<div id="accordion">');
+$news_flag = 0;
+while($array = mysqli_fetch_assoc($res)){
+                         if (!$array["username"]) $array["username"] = T_('SYSTEM');
+$numcomm = get_row_count("comments", "WHERE news='".$array['id']."'");
+// Show first 2 items expanded
+if ($news_flag < 2) {
+$disp = "block";
+$pic = "minus";
+} else {
+$disp = "none";
+$pic = "plus";
+}
+
+print("<h3><a href=\"#\">".$array['title']."</a></h3>");
+print("<div class=\"accordion-content\"><br />&nbsp;".format_comment($array["body"])."<br /><br /><hr class=\"accordion-hr\"/><p class=\"accordion-left\">".T_("POSTED")." ".T_("BY")." ".$array['username']." at ". date("g:i a", utc_to_tz_time($array['added'])) . " on ".date("F d, Y", utc_to_tz_time($array['added']))."</p><p class=\"accordion-right\"><a href='comments.php?type=news&amp;id=".$array['id']."'>".T_("COMMENTS")." (".number_format($numcomm).")</a></p><br /></div>");
+$news_flag++;
+}
+print('</div>');
+}else echo "<br /><b>".T_("NO_NEWS")."</b>";
+
+end_frame();
+}
+
 //torrent image scroller 5-21-15
 /*
 begin_frame(T_("LATEST_TORRENTS_SCROLLER"));  
@@ -420,33 +446,6 @@ if ($site_config['DISCLAIMERON']){
 /**********************************************************************************************/
 /*               JQUERY ACCORDEON MOD                    */
 /**********************************************************************************************/
-if ($site_config['NEWSON'] && $CURUSER['view_news'] == "yes"){
-begin_frame(T_("NEWS"));
-$res = SQL_Query_exec("SELECT news.id, news.title, news.added, news.body, users.username FROM news LEFT JOIN users ON news.userid = users.id ORDER BY added DESC LIMIT 10");
-if (mysqli_num_rows($res) > 0){
-print('<div id="accordion">');
-$news_flag = 0;
-while($array = mysqli_fetch_assoc($res)){
-                         if (!$array["username"]) $array["username"] = T_('SYSTEM');
-$numcomm = get_row_count("comments", "WHERE news='".$array['id']."'");
-// Show first 2 items expanded
-if ($news_flag < 2) {
-$disp = "block";
-$pic = "minus";
-} else {
-$disp = "none";
-$pic = "plus";
-}
-
-print("<h3><a href=\"#\">".$array['title']."</a></h3>");
-print("<div class=\"accordion-content\"><br />&nbsp;".format_comment($array["body"])."<br /><br /><hr class=\"accordion-hr\"/><p class=\"accordion-left\">".T_("POSTED")." ".T_("BY")." ".$array['username']." at ". date("g:i a", utc_to_tz_time($array['added'])) . " on ".date("F d, Y", utc_to_tz_time($array['added']))."</p><p class=\"accordion-right\"><a href='comments.php?type=news&amp;id=".$array['id']."'>".T_("COMMENTS")." (".number_format($numcomm).")</a></p><br /></div>");
-$news_flag++;
-}
-print('</div>');
-}else echo "<br /><b>".T_("NO_NEWS")."</b>";
-
-end_frame();
-}
 
 ?>
 <script>
