@@ -7,7 +7,7 @@ dbconn(false);
 
 
 if(isset($_GET["action"]))
-	$action = mysqli_real_escape_string($_GET["action"]);
+	$action = mysqli_real_escape_string($GLOBALS["DBconnector"], $_GET["action"]);
 else
 	$action = "";
 
